@@ -1,103 +1,77 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
+import Carusel from "./components/Carusel/Carusel";
+import Card from "./components/Card/Card";
+import Main from "./components/Main/Main";
 
 function App() {
-
-  let edad = 18
-
-  // if(edad > 18) {
-  //   console.log('eres mayor de edad')
-  // }else if (edad === 18){
-  //   console.log('justo tenes 18')
-  // }else {
-  //   console.log('eres menor de edad')
-  // }
-
-  // edad > 18 ? console.log('eres mayor') : edad === 18 ? console.log('justo tenes 18') : console.log('sos menor')
-
-  // let edadPersona = 20 
-
-  //let edadFinal =  edadPersona !== null ? edadPersona : 17 
-  // let edadFinal =  edadPersona || 17 
-
-  // // true || false => true 
-  // // true || true  => true 
-  // // false || true => true 
-  // // false || false => false  
-  //console.log(edadFinal)
-
-  // let text = ""
-  // let nombre = "" 
-
-  // let finalText = ` Esto es lo que se va a imprimir ${texto} de lo cual el auto es ${nombre}`
-  // let finalText = " Esto es lo que se va a imprimir " + texto + " de lo cual el auto es " + nombre 
-
-  // let manzanas = 10 
-  // let manzanasAgregadas = 5 
-
-  // // let finalText = "Jorege tenia " + manzanas + " pero Luis le agrego " + manzanasAgregadas + "y ahora tiene un total de" + manzanas + manzanasAgregadas 
-
-  // let finalText = ` Jorge tenia ${manzanas} manzanas y luis le agrego ${manzanasAgregadas} manzanas y ahora tiene ${(manzanas + manzanasAgregadas)}`
-  // console.log(finalText)
-
-  // //console.log( text + "juampi") => hola coder soy juampi  
-
-
-
-  // let jugadorDeFutbol = {
-
-  //   name:"Lionel",
-  //   apellido:"Messi",
-  //   soltero : false ,
-  //   hijos : ["Thiago","Mateo","Ciro"]
-  // }
-
-  // const {soltero,hijos:[,,c],name,apellido} = jugadorDeFutbol
-
-  // console.log(c)
-
-  // const arr = [1,2,3,4] 
-
-  // const resultado = arr.includes(-1)
-
-  // console.log(resultado)
-
-  // forEeach  =>  recorre  
-  // map   =>  podes modificar cosas y retorna una nueva array 
-  // find  => te devuelve el tipo de dato que encuentra y si no un objeto vacio 
-  // filter  => reduce un array  y filtra , la respuesta esta en un arr  en el caso contrario []
-  // indexOf => 1 -1
-  // every  => booleano
-  // some  => booleano 
-  // reduce  => 
-
-  let nombre = "Hovhannes"
-
   let styles = {
-    color:'white',
-    backgroundColor:'blue'
-  }
+    color: "white",
+    backgroundColor: "blue",
+  };
 
+  const cards = [
+    {
+      titulo: "Hola Soy Componente",
+      descripcion:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, itaque quod numquam consequatur similique",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Rosa_%27Ambiente%27%2C_Bad_W%C3%B6rishofen%2C_Alemania%2C_2019-06-20%2C_DD_25.jpg/1200px-Rosa_%27Ambiente%27%2C_Bad_W%C3%B6rishofen%2C_Alemania%2C_2019-06-20%2C_DD_25.jpg",
+      btnText: "Ver Mas",
+      btnClassName: "btn btn-danger fs-1",
+    },
+    {
+      titulo: "Componente de Jazmin",
+      descripcion: "Bla bla bla bla",
+      img: "https://www.rionegro.com.ar/wp-content/uploads/2021/10/Imagen-gardenia-flor-jazmin-del-cabo.jpg?w=1024",
+      btnText: "Eliminar",
+    },
+    {
+      titulo: "Componente de Jazmin",
+      descripcion: "Bla bla bla bla",
+      img: "https://www.rionegro.com.ar/wp-content/uploads/2021/10/Imagen-gardenia-flor-jazmin-del-cabo.jpg?w=1024",
+      btnText: "Eliminar",
+    },
+  ];
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1 style={styles}> Mi nombre es { nombre }</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Main>
+        <Carusel/>
+        <div className="d-flex">
+        {cards.map(
+          ({ titulo, descripcion, img, btnText, btnClassName }, index) => (
+            <Card
+              key={index}
+              titulo={titulo}
+              descripcion={descripcion}
+              img={img}
+              btnText={btnText}
+              btnClassName={btnClassName}
+            />
+          )
+        )}
+        </div>
+        
+      </Main>
+
+      {/* <Card 
+        titulo={"Hola Soy Componente"}
+        descripcion={"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, itaque quod numquam consequatur similique"}
+        img={"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Rosa_%27Ambiente%27%2C_Bad_W%C3%B6rishofen%2C_Alemania%2C_2019-06-20%2C_DD_25.jpg/1200px-Rosa_%27Ambiente%27%2C_Bad_W%C3%B6rishofen%2C_Alemania%2C_2019-06-20%2C_DD_25.jpg"}
+        btnText={"Ver Mas"}
+        btnClassName="btn btn-danger fs-1"
+      />
+        <Card 
+        titulo={"Componente de Jazmin"}
+        descripcion={"Bla bla bla bla"}
+        img={"https://www.rionegro.com.ar/wp-content/uploads/2021/10/Imagen-gardenia-flor-jazmin-del-cabo.jpg?w=1024"}
+        btnText={"Eliminar"}
+      /> */}
     </div>
   );
 }
 
 export default App;
+
+//https://www.rionegro.com.ar/wp-content/uploads/2021/10/Imagen-gardenia-flor-jazmin-del-cabo.jpg?w=1024
