@@ -2,7 +2,14 @@ import React from "react";
 import Button from "../UI/Button";
 
 const Card = (props) => {
-  const { titulo, descripcion,img,btnText,btnClassName} = props; // es un objeto
+
+  // ->  booleano, number, string, object ,array
+  // ->  funciones ? 
+
+  console.log("props",props )
+
+  const { titulo, descripcion,img,btnText,btnClassName,Fiufiu} = props; // es un objeto
+
   return (
     <div className="card" style={{width:"18rem"}}>
       <img src={img} className="card-img-top" alt="..." />
@@ -11,6 +18,7 @@ const Card = (props) => {
         <p className="card-text">{descripcion}</p>
         <Button btnText={btnText} btnClassName={btnClassName} />
       </div>
+      <Fiufiu/>
     </div>
   );
 };
