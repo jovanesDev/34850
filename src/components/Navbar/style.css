@@ -1,0 +1,16 @@
+.navlink {
+    text-decoration: none;
+    color: black;
+}
+
+.navlink_container {
+
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.isActive { 
+
+    color: red;
+}
