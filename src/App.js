@@ -1,23 +1,22 @@
-import { useEffect } from 'react';
-import useFirebase from './hook/useFirebase';
+import { BrowserRouter as Router , Routes, Route} from 'react-router-dom'
+import Carrito from './components/Carrito';
+import ItemDetail from './components/ItemDetail';
+import ItemListContainer from './components/ItemListContainer';
+import Navbar from './components/Navbar';
 
 function App() {
 
-  const {productos,getProducts} = useFirebase()
-
-  useEffect(() => {
-  
-   getProducts()
-    return () => {
-      
-    }
-  }, [])
-  
-
   return (
-    <div>
-      <h1>Hola Mundo</h1>
-    </div>
+    <Router>
+      <Navbar/>
+      <Routes>
+        <Route path='/' element={<ItemListContainer/>} />
+        <Route path='/categoria/:categoria' element={<ItemListContainer/>} />
+        <Route path='/itemDetail/:id' element={<ItemDetail/>} />
+        <Route path='/carrito' element={<Carrito/>} />
+      </Routes>
+     
+    </Router>
   );
 }
 
